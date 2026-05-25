@@ -50,17 +50,17 @@ The landing-page template in action: three products, one constraint set.
 <table>
 <tr>
   <td align="center" width="33%">
-    <a href="https://kami.tw93.fun"><img src="assets/images/1.png" alt="Kami landing page"></a>
+    <a href="https://kami.tw93.fun"><img src="assets/showcase/kami-landing.png" alt="Kami landing page"></a>
     <br><b>Kami</b> · English
     <br><sub>Design system homepage</sub>
   </td>
   <td align="center" width="33%">
-    <a href="https://luo.tw93.fun"><img src="assets/images/2.png" alt="Luo landing page"></a>
+    <a href="https://luo.tw93.fun"><img src="assets/showcase/luo-landing.png" alt="Luo landing page"></a>
     <br><b>Luo</b> · 中文
     <br><sub>CJK reading font specimen</sub>
   </td>
   <td align="center" width="33%">
-    <a href="https://mole.fit"><img src="assets/images/3.png" alt="Mole landing page"></a>
+    <a href="https://mole.fit"><img src="assets/showcase/mole-landing.png" alt="Mole landing page"></a>
     <br><b>Mole</b> · English
     <br><sub>macOS system utility</sub>
   </td>

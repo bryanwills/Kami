@@ -24,6 +24,7 @@ Kami is a document-generation skill and template system. It ships editorial HTML
 - `assets/templates/` - document templates including browser-only landing page variants.
 - `scripts/highlight.py` - Pygments-based syntax highlighting for code blocks at build time.
 - `assets/demos/` - README showcase demos.
+- `assets/showcase/` - README and public-site-only screenshots; excluded from `dist/kami.zip`.
 - `assets/diagrams/` - diagram prototypes and generated diagram assets.
 - `assets/fonts/` and `assets/illustrations/` - bundled visual assets.
 - `styles.css` - shared web-facing styles.
@@ -78,6 +79,7 @@ bash scripts/package-skill.sh
 - Use `OK:` and `ERROR:` for status text in scripts.
 - Use `scripts/ensure-fonts.sh` to recover required fonts with retry and size validation when local font files are missing or truncated.
 - Do not bundle large commercial font files into `dist/kami.zip`; package scripts should exclude them while templates keep stable local-preview paths.
+- Do not bundle README/public-site-only showcase screenshots into `dist/kami.zip`; keep them under `assets/showcase/` and exclude that directory in `scripts/package-skill.sh`.
 - Keep multilingual public pages, `llms.txt`, `robots.txt`, sitemap, JSON-LD, and FAQ content aligned when changing public positioning or install instructions.
 - Brand profile support is optional context. Keep public examples in `references/`; do not hard-code a maintainer's private local profile content.
 - Slides default to WeasyPrint HTML-to-PDF templates unless the user explicitly needs editable PPTX output.
@@ -165,7 +167,7 @@ For public releases, keep notes concise and bilingual when requested. Use one-to
 
 ## Release Flow
 
-- `bash scripts/package-skill.sh` writes the tracked `dist/kami.zip` release archive and excludes large TsangerJinKai font files.
+- `bash scripts/package-skill.sh` writes the tracked `dist/kami.zip` release archive and excludes large TsangerJinKai font files plus README/public-site-only showcase screenshots.
 - `dist/kami.zip` should be committed with release changes and uploaded to the latest GitHub release asset when refreshing the Claude Desktop package.
 - README and public site download links use `https://github.com/tw93/kami/releases/latest/download/kami.zip`; prefer refreshing that asset for small packaging or documentation fixes instead of creating a new tag.
 - Create a new version tag only when the maintainer explicitly wants a versioned release.

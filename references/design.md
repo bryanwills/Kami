@@ -959,6 +959,8 @@ Shared with WeasyPrint slides: every design token (`--parchment`, `--brand`, `--
 
 Marp-specific additions on top of that port: the theme styles bare `<p>`, `<ul>`, `<ol>`, `<li>` so that plain Markdown body content picks up Kami rhythm without explicit class attributes. These rules do not exist in `slides-weasy.html` because the WeasyPrint deck never has unclassed Markdown — they are required here because Marpit's defaults would otherwise leak through.
 
+`.co` is pinned at `bottom: 18mm` in the Marp theme, not `12mm` like in `slides-weasy.html`. Reason: the WeasyPrint deck's footer is two narrow corner labels (`.page-num` right, `.footer-mark` left) that never sit under a centered `.co`. Marp's built-in footer spans the full width at `bottom: 10mm`, so `.co` needs a wider vertical buffer to avoid stacking on top of it.
+
 Brand color and logo follow the same `brand-profile.md` Layer C rules: edit `--brand` in the theme CSS; insert a logo with `<img src="../../images/logo.svg" width="80">` on the cover slide. The output-path caveat in `production.md` Part 2.5 applies to logo URLs the same way it applies to fonts.
 
 Marp-specific syntax to know:

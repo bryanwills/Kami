@@ -65,6 +65,7 @@ section h2 {
   letter-spacing: -0.3pt;
   color: var(--near-black);
   margin-bottom: var(--rhythm-module);
+  text-wrap: balance;
 }
 
 section h3 {
@@ -147,7 +148,7 @@ section p {
   line-height: 1.55;
   color: var(--brand);
   position: absolute;
-  bottom: 12mm;
+  bottom: 18mm;
   left: 20mm;
   right: 20mm;
 }

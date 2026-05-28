@@ -19,9 +19,9 @@ footer: "Kami · Marp"
 
 <span class="eyebrow">01 · 出处</span>
 
-## 这套 deck 不是新设计，是 Kami WeasyPrint slides 的 Markdown 化
+## 把 Kami slides 搬到 Markdown 上
 
-<p class="lead">同一套色板、同一套字体、同一套布局 token。换的是文件格式与编辑姿势。</p>
+<p class="lead">同一套色板、字体、布局 token。换的是文件格式与编辑姿势。</p>
 
 <div class="c2">
 
@@ -55,7 +55,7 @@ footer: "Kami · Marp"
 
 <span class="eyebrow">02 · 四个支柱</span>
 
-## 一张 deck 要立得住，先把这四件事锁死
+## 一张 deck 立不立得住，看这四件事
 
 <table class="t2x2">
 <tr>
@@ -96,7 +96,9 @@ footer: "Kami · Marp"
 
 <span class="eyebrow">03 · 标题原则</span>
 
-## 每张 slide 的标题都是一句完整断言，不是话题标签
+## 标题写完整断言，不是话题标签
+
+<p class="lead">「Q3 业绩」是话题，「Q3 营收高出 12 个点」是断言。</p>
 
 避免 "Q3 业绩 / 团队介绍 / 下一步规划" 这种 noun phrase。改写成「Q3 营收比 guidance 高出 12 个百分点」「团队五年只做检索一件事」「下一季度把延迟从 800ms 压到 120ms」这种带结论的句子。读者扫标题就能拿到 takeaway，正文是支撑证据。
 

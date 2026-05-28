@@ -19,9 +19,9 @@ footer: "Kami · Marp"
 
 <span class="eyebrow">01 · Origin</span>
 
-## Not a new design, just the Kami WeasyPrint deck ported to Markdown
+## Kami WeasyPrint deck, ported to Markdown
 
-<p class="lead">Same palette, same fonts, same layout tokens. What changes is the file format and how you edit it.</p>
+<p class="lead">Same palette, fonts, layout tokens. Only the file format and editing posture change.</p>
 
 <div class="c2">
 
@@ -55,7 +55,7 @@ footer: "Kami · Marp"
 
 <span class="eyebrow">02 · Four pillars</span>
 
-## A deck stands on these four locked decisions, settled before you write
+## Four decisions to lock before writing
 
 <table class="t2x2">
 <tr>
@@ -96,7 +96,9 @@ One serif per page. Body 400, headings 500. No synthetic bold. Charter for EN, T
 
 <span class="eyebrow">03 · Title rule</span>
 
-## Every slide title is a full declarative sentence, not a topic label
+## Slide titles are claims, not labels
+
+<p class="lead">"Q3 results" is a topic. "Q3 revenue beat by 12%" is a claim.</p>
 
 Avoid noun phrases like "Q3 results" or "Team intro". Rewrite to "Q3 revenue beat guidance by 12 percent" or "The team has only built retrieval for five years". A reader scanning titles should leave with the takeaway; the body just supplies evidence.
 

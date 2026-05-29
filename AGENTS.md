@@ -77,8 +77,8 @@ bash scripts/package-skill.sh
 - Stabilizer changes should update `references/stabilizer_profiles.json` with deterministic, target-specific rules rather than hard-coded one-off behavior.
 - Do not use graphic emoticons in docs, template comments, or script output.
 - Use `OK:` and `ERROR:` for status text in scripts.
-- Use `scripts/ensure-fonts.sh` to recover required fonts with retry and size validation when local font files are missing or truncated.
-- Do not bundle large commercial font files into `dist/kami.zip`; package scripts should exclude them while templates keep stable local-preview paths.
+- Use `scripts/ensure-fonts.sh` to recover required fonts with retry and size validation when local font files are missing or truncated. It downloads to the XDG user font dir (`${XDG_DATA_HOME:-~/.local/share}/fonts/kami`), never into the skill's `assets/fonts`, so an installed Claude Desktop skill stays small; inside a repo checkout it is a no-op because the committed TTFs already satisfy the templates' relative path.
+- Do not bundle large commercial font files into `dist/kami.zip`; package scripts should exclude them while templates keep stable local-preview paths. The skill ZIP uploaded to Claude Desktop must be the `scripts/package-skill.sh` output (~4.3MB); a hand-zipped checkout includes the tracked ~36MB TTFs and Claude Desktop rejects it.
 - Do not bundle README/public-site-only showcase screenshots into `dist/kami.zip`; keep them under `assets/showcase/` and exclude that directory in `scripts/package-skill.sh`.
 - Keep multilingual public pages, `llms.txt`, `robots.txt`, sitemap, JSON-LD, and FAQ content aligned when changing public positioning or install instructions.
 - Brand profile support is optional context. Keep public examples in `references/`; do not hard-code a maintainer's private local profile content.
@@ -178,4 +178,4 @@ For public releases, keep notes concise and bilingual when requested. Use one-to
 - Chinese templates use TsangerJinKai02 W04/W05. Commercial use requires the appropriate font license.
 - If TsangerJinKai is unavailable, fall back through Source Han Serif SC, Noto Serif CJK SC, Songti SC, STSong, then Georgia.
 - English templates use Charter serif. Japanese output uses YuMincho first, then Hiragino Mincho ProN, Noto Serif CJK JP, Source Han Serif JP, TsangerJinKai02, and generic serif.
-- Claude Desktop ZIPs do not bundle TsangerJinKai TTF files. Run `bash scripts/ensure-fonts.sh` before building Chinese documents when fonts are missing.
+- Claude Desktop ZIPs do not bundle TsangerJinKai TTF files. Run `bash scripts/ensure-fonts.sh` before building Chinese documents when fonts are missing; it drops them in the XDG user font dir (fontconfig-scanned, outside the skill), so the installed skill stays small and online renders still use the jsDelivr `@font-face` fallback.

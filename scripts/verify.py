@@ -118,8 +118,9 @@ def verify_target(
     if missing_fonts:
         for mf in missing_fonts:
             print(f"  [FONT MISS] {name}: {mf} not found")
-        print(f"  [FONT MISS] To fix: bash scripts/ensure-fonts.sh")
-        print(f"  [FONT MISS] Or install fallback: brew install --cask font-source-han-serif-sc")
+        print(f"  [FONT MISS] Repo fix: git checkout -- assets/fonts (commercial TTFs are tracked)")
+        print(f"  [FONT MISS] Skill recovery (downloads to the user font dir, not the skill): bash scripts/ensure-fonts.sh")
+        print(f"  [FONT MISS] Fallback: brew install --cask font-source-han-serif-sc")
 
     html_text = src.read_text(encoding="utf-8")
     html_text = highlight_code_blocks(html_text)

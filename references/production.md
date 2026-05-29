@@ -65,7 +65,9 @@ font-family: "YuMincho", "Yu Mincho", "Hiragino Mincho ProN",
 
 **Font fallback affects page count**. Any font swap requires re-running the page-count check. If it overflows: lower `font-size` first, then tighten margins, then cut content.
 
-**Claude Desktop skill ZIPs do not bundle large Chinese font files**: `TsangerJinKai02-W04.ttf` and `TsangerJinKai02-W05.ttf` are close to 19MB each and can make Claude.ai / Desktop skill upload or execution time out. Release ZIPs must be generated with `scripts/package-skill.sh`, which excludes both TTF files. Templates still keep local-first and jsDelivr fallback `@font-face` paths.
+**Claude Desktop skill ZIPs do not bundle large Chinese font files**: `TsangerJinKai02-W04.ttf` and `TsangerJinKai02-W05.ttf` are close to 19MB each and can make Claude.ai / Desktop skill upload or execution time out. The ZIP you upload must be the `scripts/package-skill.sh` output (~4.3MB), never a hand-zipped checkout (the tracked TTFs make that ~40MB and Claude Desktop rejects it). `package-skill.sh` excludes both TTF files. Templates still keep local-first and jsDelivr fallback `@font-face` paths.
+
+When Chinese fonts are missing (the skill case), `scripts/ensure-fonts.sh` downloads them to the XDG user font dir (`${XDG_DATA_HOME:-~/.local/share}/fonts/kami`, override with `KAMI_FONT_DIR`), **not** into the skill's `assets/fonts`. fontconfig scans that dir by default on macOS and Linux, so WeasyPrint resolves `TsangerJinKai02` from there while the installed skill stays small; online renders still use the jsDelivr `@font-face` URL.
 
 **Standalone HTML export** (sending a filled HTML file to someone else): this is not guaranteed to work outside the project tree. If the recipient cannot set up the font environment, use the PDF output instead.
 
@@ -502,7 +504,10 @@ Apply dense mode only when the 4-project layout already overflows. Do not use it
 **Fix**:
 
 ```bash
-# Preferred: multi-source download script (retries, size validation)
+# Preferred: multi-source download script (retries, size validation).
+# Lands fonts in ${XDG_DATA_HOME:-~/.local/share}/fonts/kami (fontconfig-scanned,
+# outside the skill dir), then runs fc-cache. Inside a repo checkout it is a
+# no-op because the committed TTFs already satisfy the templates' relative path.
 bash scripts/ensure-fonts.sh
 
 # Or put .ttf alongside the HTML

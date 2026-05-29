@@ -462,7 +462,7 @@ Visual anomalies (tag double rectangle, font fallback, page break issues) -> `pr
 - No separate sans: `--sans: var(--serif)`, one font per page
 - Fallback: Georgia (cross-platform) / Palatino / Times New Roman
 
-Font files next to HTML with relative `@font-face` paths is the most stable setup. `scripts/package-skill.sh` excludes TsangerJinKai TTFs from the Claude Desktop ZIP.
+Font files next to HTML with relative `@font-face` paths is the most stable setup. `scripts/package-skill.sh` excludes TsangerJinKai TTFs from the Claude Desktop ZIP, so the uploaded package stays ~4.3MB. Always upload that `package-skill.sh` output, never a hand-zipped checkout (the tracked TTFs make it ~40MB and Claude Desktop rejects the upload).
 
 **Font auto-recovery (Claude Desktop)**
 
@@ -472,7 +472,7 @@ Before building Chinese documents, ensure fonts are present. The script tries mu
 bash scripts/ensure-fonts.sh
 ```
 
-Run once before building. If all sources fail, the script suggests installing Source Han Serif SC as fallback.
+It downloads to the XDG user font dir (`${XDG_DATA_HOME:-~/.local/share}/fonts/kami`, override with `KAMI_FONT_DIR`), **not** into the skill's `assets/fonts` -- that keeps the installed skill small so Claude Desktop never trips its size limit. fontconfig scans that dir by default, so WeasyPrint finds `TsangerJinKai02` there; online renders fall back to the jsDelivr `@font-face` URL. Run once before building. If all sources fail, the script suggests installing Source Han Serif SC as fallback.
 
 ## Feedback protocol
 

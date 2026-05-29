@@ -203,6 +203,8 @@ Confirm the materials that make the subject recognizable before layout:
 
 If a required item is missing, use a compact gap table and ask once. Do not replace missing material with generic imagery, approximate logo drawings, or invented values.
 
+Logo fallback: when the request names no logo but the brand profile has a `logo` path, fill the commented `.brand-logo` slot in `one-pager` / `portfolio` / `slides-weasy` per `references/brand-profile.md` Layer C. Expand `~` to an absolute path, and if the file is missing or the template has no slot, leave it commented and render without a logo (never insert a broken image). An explicit logo in the current request always wins.
+
 ### Materials status block
 
 After the material check, output a structured status block before continuing. This is a one-shot transparency display, not a question:

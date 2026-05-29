@@ -1064,6 +1064,18 @@ figure img,
 
 Apply this rule to any `<img>` placed inside a fixed-size container. For `object-fit: contain` (slides, logos), `object-position` has no visible effect; omit it.
 
+### Brand logo slot
+
+`one-pager`, `portfolio`, and `slides-weasy` (and their `-en` variants) carry an optional brand logo slot, supplied by the brand profile `logo` field (see `references/brand-profile.md` Layer C). It ships commented out, so the default render is unchanged. The `.brand-logo` rule is fixed-height, `width: auto`, `object-fit: contain`, so any aspect ratio scales cleanly without distortion. Sizes are deliberately per template, not a shared token:
+
+| Template | Height | Placement |
+|---|---|---|
+| one-pager | `44px` | top of the header flex row, `align-self: flex-start` |
+| portfolio | `72px` | above the cover eyebrow, inside `.cover-head` |
+| slides-weasy | `72px` | centered above the cover `h1` |
+
+Keep the base and `-en` `.brand-logo` rules identical; the cross-template lint pair check (`scripts/lint.py`) flags drift. Do not add `object-position` (no effect under `object-fit: contain`).
+
 ---
 
 ## 11. Landing Page (screen-first)

@@ -117,6 +117,14 @@
     line-height: 1.45;
     white-space: nowrap;
   }
+  /* 品牌 logo 槽(可选,来自 brand profile;默认无 logo,样式仅在取消注释后生效)。 */
+  .brand-logo {
+    height: 44px;
+    width: auto;
+    max-width: 160px;
+    object-fit: contain;
+    align-self: flex-start;
+  }
 
   /* ========== METRICS ========== */
   /* 横向 baseline 布局 - -  和 resume.html 一致的 kami native 姿态。
@@ -327,6 +335,9 @@
     {{日期 YYYY.MM.DD}}<br>
     {{版本号 / 状态}}
   </div>
+  <!-- 品牌 logo 槽(可选,来自 brand profile 的 logo 字段)。无 logo 时保持注释,勿插破图。
+       有 logo 时取消注释,把 src 换成已展开的本地绝对路径:
+  <img class="brand-logo" src="/absolute/path/to/logo.svg" alt=""> -->
 </div>
 
 <!-- ========== METRICS（可选，3-4 卡最佳） ========== -->

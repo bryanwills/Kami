@@ -91,6 +91,8 @@ Ink Blue `#1B365D` over parchment `#f5f4ed`:
 | 0.22 | `#D0DCE9` |
 | 0.30 | `#D6E1EE` |
 
+The default tag swatch `#E4ECF5` is registered as the `--tag-bg` token in `tokens.json`, so its 15 template definitions stay under the sync guard. It shares a value with `--brand-tint-strong` but is a distinct semantic role (tag fill vs strong brand tint).
+
 ---
 
 ## 2. Typography

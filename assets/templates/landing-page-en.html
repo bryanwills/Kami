@@ -3,7 +3,7 @@
      LANDING PAGE · English · parchment design system
      Screen-first product landing page with interactive gallery
      Sections: Hero · Gallery · Features · Principles · Pricing · FAQ · Footer
-     No PDF output — designed for browser delivery via Vercel / Netlify / static host
+     No PDF output, designed for browser delivery via Vercel / Netlify / static host
      ================================================================== -->
 <html lang="en">
 <head>
@@ -904,7 +904,7 @@ footer.foot {
     <div class="eyebrow">
       <span>{{EYEBROW_TEXT}} · <a class="version-link" href="{{RELEASES_URL}}">{{VERSION}}</a></span>
       <span class="hero-links">
-        <!-- {{HERO_LINKS}} — e.g. GitHub, X, website icons -->
+        <!-- {{HERO_LINKS}}, e.g. GitHub, X, website icons -->
       </span>
     </div>
 
@@ -913,7 +913,7 @@ footer.foot {
     <p class="tagline">{{TAGLINE}}</p>
 
     <div class="hero-tokens">
-      <!-- {{HERO_TOKENS}} — key facts as <span><b>value</b> label</span> -->
+      <!-- {{HERO_TOKENS}}, key facts as <span><b>value</b> label</span> -->
     </div>
 
     <div class="hero-cta">
@@ -933,7 +933,7 @@ footer.foot {
 
     <div class="gallery" data-gallery>
       <div class="gallery-frame" aria-live="polite">
-        <!-- {{GALLERY_PANELS}} — repeat this block per screenshot:
+        <!-- {{GALLERY_PANELS}}, repeat this block per screenshot:
         <figure class="gallery-panel is-active" data-title="Feature Name" data-line="Short poetic line.">
           <img src="./img/feature.jpg" alt="Description" loading="eager" decoding="async">
         </figure>
@@ -947,7 +947,7 @@ footer.foot {
         <p class="line" data-gallery-line></p>
       </div>
       <div class="gallery-tabs" aria-label="Choose a screenshot">
-        <!-- {{GALLERY_TABS}} — one <button> per panel:
+        <!-- {{GALLERY_TABS}}, one <button> per panel:
         <button type="button" class="is-active" aria-pressed="true">Feature Name</button>
         <button type="button" aria-pressed="false">Feature 2</button>
         -->
@@ -963,7 +963,7 @@ footer.foot {
     </div>
 
     <ol class="features">
-      <!-- {{FEATURES_LIST}} — repeat per feature:
+      <!-- {{FEATURES_LIST}}, repeat per feature:
       <li>
         <p class="name">Feature Name<small>Short poetic subtitle.</small></p>
         <p class="what">Description of what this feature does and why it matters.</p>
@@ -980,7 +980,7 @@ footer.foot {
     </div>
 
     <ol class="principles">
-      <!-- {{PRINCIPLES_LIST}} — repeat per principle:
+      <!-- {{PRINCIPLES_LIST}}, repeat per principle:
       <li>
         <span class="n">1</span>
         <span class="body"><b>Principle title</b><span>Explanation of the principle.</span></span>
@@ -1013,14 +1013,14 @@ footer.foot {
     </div>
 
     <dl class="faq">
-      <!-- {{FAQ_PAIRS}} — repeat per question:
+      <!-- {{FAQ_PAIRS}}, repeat per question:
       <div class="faq-pair">
         <dt>Question text?</dt>
         <dd>Answer text.</dd>
       </div>
       -->
     </dl>
-    <!-- {{FAQ_TAIL}} — optional closing line, e.g.:
+    <!-- {{FAQ_TAIL}}, optional closing line, e.g.:
     <p class="faq-tail">More questions? Visit the <a href="/help">help page</a>.</p>
     -->
   </section>
@@ -1034,7 +1034,7 @@ footer.foot {
     </div>
     <div class="colophon">
       <div class="links">
-        <!-- {{FOOTER_LINKS}} — middot-separated editorial links, e.g.:
+        <!-- {{FOOTER_LINKS}}, middot-separated editorial links, e.g.:
         <a href="https://x.com/..." target="_blank" rel="noopener">Twitter</a> &middot;
         <a href="mailto:...">Email</a> &middot;
         <a href="/help">Help</a> &middot;

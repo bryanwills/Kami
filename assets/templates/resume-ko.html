@@ -3,7 +3,7 @@
      RESUME TEMPLATE (KO) · parchment design system
      한국어 이력서 (A4 엄격 2페이지)
      변경 후 실행: python3 -c "from weasyprint import HTML; HTML('resume-ko.html').write_pdf('out.pdf')"
-     목표: 정확히 2페이지 — 넘치거나 모자라면 수정 필요
+     목표: 정확히 2페이지. 넘치거나 모자라면 수정 필요
      ================================================================== -->
 <html lang="ko">
 <head>
@@ -51,7 +51,6 @@
     --stone:     #6b6a64;
     --brand:     #1B365D;
     --brand-tint: #EEF2F7;
-    --brand-tint-strong: #E4ECF5;
     --serif: "Source Han Serif K", "Noto Serif KR", "Apple SD Gothic Neo", "AppleMyungjo", Charter, Georgia, serif;
     --sans: var(--serif);
   }
@@ -505,7 +504,7 @@
  - 모든 {{변수}}를 실제 내용으로 교체
  - 해당 없는 섹션(오픈소스/AI 판단/외부 영향력)은 삭제
  - 프로젝트 수는 조정 가능, 각 항목은 역할/행동/결과 3단 구조 유지
- - 수정 후 검증 필수 — 반드시 2페이지여야 함:
+ - 수정 후 검증 필수, 반드시 2페이지여야 함:
        python3 -c "from weasyprint import HTML; HTML('resume-ko.html').write_pdf('out.pdf')"
  - 콘텐츠 전략은 references/writing.md 참고
      ===================================================================== -->

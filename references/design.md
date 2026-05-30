@@ -91,7 +91,7 @@ Ink Blue `#1B365D` over parchment `#f5f4ed`:
 | 0.22 | `#D0DCE9` |
 | 0.30 | `#D6E1EE` |
 
-The default tag swatch `#E4ECF5` is registered as the `--tag-bg` token in `tokens.json`, so its 15 template definitions stay under the sync guard. It shares a value with `--brand-tint-strong` but is a distinct semantic role (tag fill vs strong brand tint).
+The default tag swatch `#E4ECF5` is registered as the `--tag-bg` token in `tokens.json`, so its 15 template definitions stay under the sync guard.
 
 ---
 
@@ -968,7 +968,7 @@ Files:
 
 Shared with WeasyPrint slides: every design token (`--parchment`, `--brand`, `--serif`, `--mono`), the Kami class scale (`.eyebrow`, `.lead`, `.mt`, `.ml`, `.mb`, `.mc`, `.co`, `.c2`, `table.t2x2`, `table.data`, `section.cover`), and the 280×158mm page size. The Marp theme is a port, not a redesign.
 
-Marp-specific additions on top of that port: the theme styles bare `<p>`, `<ul>`, `<ol>`, `<li>` so that plain Markdown body content picks up Kami rhythm without explicit class attributes. These rules do not exist in `slides-weasy.html` because the WeasyPrint deck never has unclassed Markdown — they are required here because Marpit's defaults would otherwise leak through.
+Marp-specific additions on top of that port: the theme styles bare `<p>`, `<ul>`, `<ol>`, `<li>` so that plain Markdown body content picks up Kami rhythm without explicit class attributes. These rules do not exist in `slides-weasy.html` because the WeasyPrint deck never has unclassed Markdown. They are required here because Marpit's defaults would otherwise leak through.
 
 `.co` is pinned at `bottom: 18mm` in the Marp theme, not `12mm` like in `slides-weasy.html`. Reason: the WeasyPrint deck's footer is two narrow corner labels (`.page-num` right, `.footer-mark` left) that never sit under a centered `.co`. Marp's built-in footer spans the full width at `bottom: 10mm`, so `.co` needs a wider vertical buffer to avoid stacking on top of it.
 
@@ -1221,7 +1221,7 @@ Korean templates use Source Han Serif K (Adobe, also distributed by Google
 as Noto Serif KR) as the primary serif. The font's hangul metrics are close
 enough to TsangerJinKai (CN) that the CN per-component values render
 naturally in Korean without per-template re-tuning. The `one-pager-ko`
-pilot confirmed that the CN baseline values flow through cleanly — every
+pilot confirmed that the CN baseline values flow through cleanly: every
 numeric value below matches the CN one-pager (and the rest of the CN
 doc-style templates by extension), with one KO-specific micro-adjustment:
 `.metric-label` font-size drops from 9pt to 7pt to accommodate the longer
@@ -1235,8 +1235,8 @@ Canonical values (verified during the `one-pager-ko` pilot, 2026-05-28):
 - Body `letter-spacing`: 0.3pt (matches CN baseline)
 - H1 `font-size`: 24pt (matches CN baseline)
 - H1 `font-weight`: 500. CN templates use 500 (TsangerJinKai W05, a
-  Medium-Bold) for every emphasis — body bold, headings, tags, metric
-  values — and never reach for 700. Source Han Serif K exposes the full
+  Medium-Bold) for every emphasis (body bold, headings, tags, metric
+  values) and never reach for 700. Source Han Serif K exposes the full
   weight range (ExtraLight through Heavy), so KO bundles Regular (400) +
   Medium (500) to mirror CN's W04/W05 two-weight discipline. The result:
   KO emphasis reads at the same Medium tier as CN, rather than the heavier
@@ -1244,7 +1244,7 @@ Canonical values (verified during the `one-pager-ko` pilot, 2026-05-28):
 - H1 `letter-spacing`: matches CN per-template setting (typically 0 to −0.2pt
   on display H1s; copied from the CN sibling).
 - H1 `line-height`: 1.15 (matches CN baseline)
-- `.metric-label` `font-size`: 7pt (one-pager-ko only — KO labels read wider
+- `.metric-label` `font-size`: 7pt (one-pager-ko only: KO labels read wider
   than CN/EN, so the baseline-flex metric strip needs a smaller label to
   avoid wrapping inside the card column).
 - `font-synthesis: none;` MUST be applied to the body rule. WeasyPrint can

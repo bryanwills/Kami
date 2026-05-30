@@ -2,7 +2,7 @@
 #
 # Kami treats this as the lowest-resolution context: a fallback when the current
 # request is ambiguous. The current document's needs always come first. Leave
-# fields blank when you don't have a strong preference — silence is fine.
+# fields blank when you don't have a strong preference. Silence is fine.
 #
 # To activate: cp references/brand.example.md ~/.config/kami/brand.md
 # Then edit the values below.

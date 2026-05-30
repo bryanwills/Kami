@@ -295,7 +295,7 @@ Use the `npx @marp-team/marp-cli@latest ...` form below for zero-install. For re
 
 Run from the repo root so input paths resolve. **Input file must come before `--theme-set`**; `--theme-set` is a yargs array option and will swallow any positional arg that follows it.
 
-**Font path caveat**: Marp inlines the theme CSS into the output HTML verbatim. The `@font-face` `url("../../fonts/...")` paths in the theme therefore resolve relative to the *output file location*, not the theme CSS location. When the output sits inside the repo (e.g. `-o assets/examples/kami.html`), the relative path matches and local Tsanger / Charter loads. When the output sits elsewhere (e.g. `-o /tmp/kami.html`), the relative path misses and the browser falls back to the jsDelivr CDN URL declared alongside each local one — this needs network. This differs from WeasyPrint, where CSS paths resolve relative to the input HTML.
+**Font path caveat**: Marp inlines the theme CSS into the output HTML verbatim. The `@font-face` `url("../../fonts/...")` paths in the theme therefore resolve relative to the *output file location*, not the theme CSS location. When the output sits inside the repo (e.g. `-o assets/examples/kami.html`), the relative path matches and local Tsanger / Charter loads. When the output sits elsewhere (e.g. `-o /tmp/kami.html`), the relative path misses and the browser falls back to the jsDelivr CDN URL declared alongside each local one. This needs network. This differs from WeasyPrint, where CSS paths resolve relative to the input HTML.
 
 ```bash
 # HTML preview (no Chromium needed; zero external download)
@@ -765,7 +765,7 @@ Quick check before building any demo: `rg 'src="(\.\./|/Users/|file://)' assets/
 
 **Root cause**: `align-items: baseline` aligns each metric to the **first line** of its label. When labels have different line counts, the visible heights differ but the numbers all sit at the same baseline (= top), making the row look uneven.
 
-**Fix**: Stack vertically (`flex-direction: column`). All numbers sit on the same top edge, all labels start at the same y below the numbers, and label wrap only extends each column's bottom — which is invisible on a slide / page.
+**Fix**: Stack vertically (`flex-direction: column`). All numbers sit on the same top edge, all labels start at the same y below the numbers, and label wrap only extends each column's bottom, which is invisible on a slide / page.
 
 ```css
 /* avoid: breaks visually when one label wraps */

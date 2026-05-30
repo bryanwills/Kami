@@ -8,7 +8,7 @@ Splits out from build.py:
 
 Each `Finding` is anchored to a file path + line number so editors can jump
 straight to the violation. Rules encode real WeasyPrint pitfalls (rgba on
-background, thin border with border-radius, etc.) — not style preferences.
+background, thin border with border-radius, etc.), not style preferences.
 """
 from __future__ import annotations
 

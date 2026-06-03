@@ -215,6 +215,10 @@ English stack on PowerPoint:
 8. **Quote**: parchment, minimal, centered serif quote + `- Source`
 9. **Closing**: parchment, centered "Thank you / Q&A / Contact"
 
+### Template-bound PPTX inventory
+
+Use this only when the user provides a real PPTX or brand template and explicitly asks to preserve its layout system. First inspect the template visually, identify the few reusable layout families, and map each planned section to one existing slide family. Then edit content while preserving the template's shape structure. Do not run this inventory step for Kami's default WeasyPrint or Marp paths; those already have fixed template contracts.
+
 ### Script skeleton
 
 Full working example in `assets/templates/slides-en.py`. Key bits:
@@ -426,6 +430,8 @@ Run this when the deliverable is a landing page, product site, or hosted showcas
 | Public metadata | Canonical, hreflang, `og:locale`, social image, JSON-LD, robots, sitemap, `llms.txt`, and `llms-full.txt` all reflect the shipped locale set. |
 | Copy sync | Product positioning, price, version, install path, support link, FAQ, `llms.txt`, and `llms-full.txt` carry the same factual claims in every locale. |
 | Asset reality | Screenshots are real product surfaces and every image path resolves from the repo or a public URL. No `/Users`, `file://`, or sibling-repo relative paths. |
+| Screenshot fit | Hero, gallery, feature, and social-image slots use stable ratios. UI text, numbers, prompts, and controls are not cropped away for aesthetics. |
+| Motion fallback | Gallery rotation, entrance animation, or custom transitions respect `prefers-reduced-motion`; a still page remains readable with motion disabled. |
 | Link surface | Primary CTA, download, releases, docs, help, social links, and internal locale links resolve. Any named release or download artifact exists. |
 
 If the site has only one or two locales, hand-maintained static pages are acceptable. For three or more locales, prefer a generator with a drift check over repeated manual edits.

@@ -78,3 +78,21 @@ The main `landing-page.html` template does not ship a price card or language swi
 | 38 | FAQ and `llms-full.txt` diverge | FAQ says one install path or price, AI-facing docs say another | Treat FAQ, JSON-LD, `llms.txt`, and `llms-full.txt` as one public fact set and update them together |
 | 39 | Screenshot gallery uses private local assets | `<img src="/Users/me/project/shot.png">` or `../other-repo/shots/app.webp` | Copy the image into the site repo or use a stable public URL; packaged templates must not depend on sibling checkouts |
 | 40 | Locale copy updated in only one place | One locale changes price, version, or install path while other locale pages still show the old facts | Search all locale pages plus structured data for the old value and update every matching surface |
+
+## Image Slots
+
+| # | Pattern | Bad | Fix |
+|---|---------|-----|-----|
+| 41 | Image generated before slot | A polished 16:9 concept image is forced into a 3:2 feature panel and loses its focal point | Decide the slot first, then crop, pad, or generate to that ratio |
+| 42 | Real screenshot redrawn as fake UI | A product screenshot is AI-redesigned and no longer matches the shipped app | Preserve real screenshots; use programmatic padding or split panels before redrawing |
+| 43 | Mixed screenshot ratios in one group | Three gallery panels jump between tall, wide, and square crops | Normalize the frame and padding; keep the screenshot content intact inside it |
+| 44 | Missing product image filled with atmosphere | A product page uses abstract texture because no screenshot was provided | Mark the material gap or omit the panel; do not substitute unrelated imagery |
+
+## Slides
+
+| # | Pattern | Bad | Fix |
+|---|---------|-----|-----|
+| 45 | Ghost deck fails | Reading only slide titles produces a pile of topics, not an argument | Rewrite titles and order before touching layout |
+| 46 | Multiple evidence shapes on one slide | One slide contains a chart, screenshot, code block, and quote | Pick the primary proof, then split the rest into adjacent slides or appendix |
+| 47 | Visual brief leaks into audience copy | Caption says "21:9 ultra-wide screenshot with quiet background" | Keep image prompts and crop notes in the slot map; captions state the insight |
+| 48 | Template inventory without a template | Default Kami deck gets a fake layout-mapping phase | Only inventory a real user-provided PPTX or brand template |

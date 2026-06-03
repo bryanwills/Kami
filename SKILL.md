@@ -102,11 +102,11 @@ If a change touches `SKILL.md`, templates, scripts, references, or package input
 
 > **Landing Page companion files**: For a production multilingual deploy, copy the five `landing-page-*.example` files alongside the main HTML, remove the `.example` suffix, and fill the placeholders. They cover Vercel rewrites and headers, sitemap hreflang, robots AI allowlist, and llms.txt + llms-full.txt for AI assistants. The main HTML already ships matching hreflang and og:locale in `<head>`; an Accept-Language redirect at the end of `landing-page-en.html` is commented out for opt-in. `{{SITE_ORIGIN}}` is the scheme + host of your `{{CANONICAL_URL}}` (e.g. `https://example.com`). See `references/design.md` Section 11 «Companion assets».
 
-> **Production product site mode**: If the user needs docs, help, releases, changelog, roadmap, legal pages, or more than two locales, treat it as a site system. Lock product category, real screenshots, locale list, companion files, long-content pages, and generator/check needs before filling templates. Keep project-specific release artifacts, payment providers, appcast rules, and private local paths out of Kami. See `references/design.md` Section 11 «Product site system».
+> **Production product site mode**: If the user needs docs, help, releases, changelog, roadmap, legal pages, or more than two locales, treat it as a site system. Lock product category, real screenshot slots, locale list, companion files, long-content pages, and generator/check needs before filling templates. Keep project-specific release artifacts, payment providers, appcast rules, and private local paths out of Kami. See `references/design.md` Section 11 «Product site system».
 
 > Slides: default to `slides-weasy.html` / `slides-weasy-en.html` (WeasyPrint HTML → PDF). Use `slides.py` / `slides-en.py` only when the user explicitly requires an editable PPTX file. Use `assets/templates/marp/slides-marp(.md|.css)` only when the user explicitly asks for Marp / markdown slides / a deck that lives in a `.md` file.
 
-> Deck recipe: read design.md Section 8 before drafting slides. Marp-specific constraints live in design.md §8 «Marp variant».
+> Deck recipe: read design.md Section 8 before drafting slides. Sketch title sequence, evidence shape, and image slot before generating or cropping visuals. Keep audience copy separate from visual briefs. Marp-specific constraints live in design.md §8 «Marp variant».
 
 ### Decision tree (use before asking)
 
@@ -286,7 +286,7 @@ Before drafting any slide, confirm these points with the user. Ask all at once, 
 | 1 | **Audience + venue** - who is in the room, and is it live keynote, investor 1:1, or async share link? |
 | 2 | **Length target** - presentation time or slide count? (15 min: ~10 slides / 30 min: ~20 slides / 45 min: ~25-30 slides) |
 | 3 | **Source material** - what content is already ready: outline, doc, notes, data? |
-| 4 | **Images** - are screenshots, charts, logos, or product images available, or are gaps expected? |
+| 4 | **Images** - are screenshots, charts, logos, or product images available; which slides need real evidence slots; and is a separate visual brief needed? |
 | 5 | **Hard constraints** - brand colors, required logo, PPTX required, any slides that must exist? |
 | 6 | **Format confirmation** - slides deck, or a one-pager that looks like a deck? |
 
@@ -295,13 +295,16 @@ Before drafting any landing page or product site, lock these points from the sou
 | # | Lock |
 |---|---|
 | 1 | **Product category** - first-viewport category: app, CLI, terminal, utility, skill, template system, or another user-provided label. |
-| 2 | **Real assets** - available product screenshots, logo, icon, or UI captures. Missing assets must stay marked, not replaced with stock imagery. |
+| 2 | **Real assets** - available product screenshots, logo, icon, or UI captures, mapped to hero/gallery/feature/social slots. Missing assets must stay marked, not replaced with stock imagery. |
 | 3 | **Site shape** - single page, or home plus docs/help/releases/changelog/roadmap/legal pages? |
 | 4 | **Locales** - exact locale list, canonical paths, and whether a generator/check mode is needed. |
 | 5 | **Truth surfaces** - install path, price, version, support route, FAQ, `llms.txt`, and `llms-full.txt` that must stay synchronized. |
 
 ### Content rules for slides
 
+- Ghost deck test: read only the slide titles in order. They must tell the argument; if not, fix titles or structure before styling
+- One evidence shape per slide: chart, table, screenshot, code, quote, or conclusion. Split mixed evidence instead of crowding one slide
+- Audience copy stays clean: titles, body, and captions never contain image prompts, crop instructions, or generation notes
 - No section divider slides: use `.eyebrow` for section numbering, not a dedicated blue-background page
 - No CJK parentheses: replace `（...）` with `·` or `,`
 - Each bullet fits one line: trim until it does

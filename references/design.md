@@ -929,10 +929,16 @@ table.data td:first-child {
 |---|---|
 | No section divider slides | Use `.eyebrow` for section numbering instead; saves one slide per section |
 | No CJK parentheses | Replace `（...）` with `·` or `,` |
+| Ghost deck test | Read only slide titles in order. They must tell the argument; disconnected titles mean the structure is not ready |
+| One evidence shape | Each slide has one primary proof form: chart, table, screenshot, code, quote, or conclusion. Split mixed evidence |
 | One line per bullet | Trim until each item fits on one line; never let it wrap |
 | Empty space ≥50% | Draft defect. Order: merge with neighbor slide > pin `.co` callout > add a chart that earns the space. Shrinking page size is a last resort and must apply to the whole deck, not per slide. |
 | Empty space 25-50% | Acceptable if the slide has a pinned `.co` callout. Otherwise add one supporting bullet or a small inline figure. Never pad with filler prose. |
 | Cover | No horizontal rule; title centered `38pt`; subtitle on one line; bottom meta centered |
+
+Before drafting an image-heavy deck, sketch a short slot map: `page -> slide title -> evidence shape -> image slot -> visual brief`. Use broad types only: cover, assertion, comparison, metric, quote, image evidence, closing. This is a rhythm check, not a locked layout registry. The `visual brief` is internal working material for image selection, crop, or generation; it must not leak into slide titles, body copy, or captions. Keep Kami's default simple: use the existing `.c2`, `table.t2x2`, `.co`, data table, and inline figure patterns unless the source material clearly needs something else.
+
+If the user provides a real PPTX or brand template and explicitly asks to preserve it, do a template inventory before content editing: thumbnail the source deck, identify reusable layout families, then map each section to an existing layout. Do not do this for the default WeasyPrint or Marp paths; Kami templates are already the inventory.
 
 ### Troubleshooting
 
@@ -1049,7 +1055,7 @@ Key rules:
 
 ## 10. Image Aspect Ratios and Cropping
 
-Use this table when placing images in any Kami template. The ratios are defaults, not constraints; adjust by one step if the source image differs significantly.
+Use this table when placing images in any Kami template. Pick the content slot first, then decide whether the source should be preserved, padded, cropped, or regenerated. The ratios are defaults, not constraints; adjust by one step if the source image differs significantly.
 
 | Context | Preferred ratio | Notes |
 |---|---|---|
@@ -1060,7 +1066,13 @@ Use this table when placing images in any Kami template. The ratios are defaults
 | Square thumbnail (icon grid, avatar, logo) | 1:1 | Enforced with `aspect-ratio: 1/1` |
 | Slide image grid (26vh fixed-height row) | Fixed height, free width | Grid items share a row height; clip width to fit |
 
-**Cropping rule**: always `object-position: top center`. Crop from the bottom first, then from the sides. Never crop from the top; heads, titles, and focal points live there.
+**Slot-first rule**: do not generate an image and then hunt for a place to put it. Decide the image job first: proof screenshot, product surface, person/place photo, diagram, logo, or decorative texture. Proof screenshots and product UI keep fidelity; only diagrams and concept images may be redrawn for style.
+
+**Audience copy vs visual brief**: visible copy says what the reader should believe. A visual brief says what the image should contain, crop, preserve, or avoid. Keep the brief in the layout note, comments, or temporary slot map. Never paste prompt fragments such as "16:9 cinematic UI mockup" or crop instructions into captions, bullets, alt text, FAQ, or metadata.
+
+**Screenshot handling**: product screenshots default to `object-fit: contain` inside a stable frame, or to a programmatic canvas with quiet padding when the target ratio differs. Do not crop away UI text, numbers, window chrome, terminal prompts, or controls just to fill a frame. If the screenshot is too tall, too narrow, or too dense, split it into 2-3 panels before considering an AI redraw. When a redraw is unavoidable, label it as a schematic or concept image, not a real screenshot.
+
+**Cropping rule**: choose `object-position` by subject, not as a universal default. UI screenshots use `contain` or centered padding. Photos of people or products use `cover` with the subject in the safe center area (`center center` or `center 35%`). Document scans and pages often prefer `top center` because titles live at the top.
 
 ```css
 .frame-img,
@@ -1069,11 +1081,11 @@ figure img,
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: top center;
+  object-position: center center;
 }
 ```
 
-Apply this rule to any `<img>` placed inside a fixed-size container. For `object-fit: contain` (slides, logos), `object-position` has no visible effect; omit it.
+Apply this to fixed-size containers that intentionally crop photos or illustrations. For `object-fit: contain` (screenshots, slides, logos), `object-position` has little visible effect; use frame padding and alignment instead.
 
 ### Brand logo slot
 
@@ -1101,6 +1113,19 @@ The landing-page template is the only kami template designed for browser deliver
 - Product positioning must be checked against current product surfaces before rewriting. Stale category language is worse than a missing feature detail.
 - Locale pages, FAQ, JSON-LD, `llms.txt`, `llms-full.txt`, screenshots, install copy, pricing, version, and support links are one public fact set. Keep the factual claims aligned across them.
 - Do not promote project-specific release artifacts, appcast rules, payment providers, or private local paths into the generic template.
+
+### Product screenshot slots
+
+Use a small slot matrix before filling a landing page or product site. This keeps the default beautiful without adding a new template system:
+
+| Slot | Preferred asset | Fit |
+|---|---|---|
+| Hero signal | real product surface, terminal state, or app window | 16:10 or 16:9, preserve recognition over full-bleed drama |
+| Gallery panel | one shipped workflow or reachable UI state | stable frame, real screenshot first, no unrelated filler |
+| Feature panel | focused crop or two-step before/after proof | preserve labels and controls; split dense screenshots |
+| Social image | product name + one recognizable surface | 1200x630 crop, repo path or public URL |
+
+Every screenshot path must resolve from the repo or a stable public URL. Never reference `/Users`, `file://`, or sibling checkouts. Missing visuals remain material gaps or omitted panels; they are not replaced with stock atmosphere.
 
 ### Layout
 

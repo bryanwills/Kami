@@ -23,7 +23,6 @@ DIAGRAMS = ROOT / "assets" / "diagrams"
 EXAMPLES = ROOT / "assets" / "examples"
 TOKENS_FILE = ROOT / "references" / "tokens.json"
 CHECKS_THRESHOLDS_FILE = ROOT / "references" / "checks_thresholds.json"
-CROSS_TEMPLATE_ALLOWLIST_FILE = ROOT / "references" / "cross_template_diff_allowlist.json"
 
 # Canonical parchment background color, kept here so build/density
 # checks share one source of truth instead of redefining the RGB triple.
@@ -155,11 +154,3 @@ def load_checks_thresholds() -> dict[str, Any]:
         "density": {"warn_pct": 0.25, "sparse_pct": 0.50, "dpi": 36},
         "orphan": {"max_words": 2, "max_chars": 15},
     }
-
-
-@functools.lru_cache(maxsize=1)
-def load_cross_template_allowlist() -> dict[str, Any]:
-    """Return the CN/EN drift allowlist. Missing file -> empty allowlist."""
-    if CROSS_TEMPLATE_ALLOWLIST_FILE.exists():
-        return json.loads(CROSS_TEMPLATE_ALLOWLIST_FILE.read_text(encoding="utf-8"))
-    return {"always_allowed": [], "per_pair_allowed": {}}

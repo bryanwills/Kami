@@ -17,7 +17,6 @@ Kami is a document-generation skill and template system. It ships editorial HTML
 - `references/anti-patterns.md` - six-category checklist for reviewing drafts.
 - `references/tokens.json` - canonical color tokens (drift-checked by `scripts/tokens.py`).
 - `references/checks_thresholds.json` - rhythm / density / orphan check thresholds (loaded by `scripts/checks.py`).
-- `references/cross_template_diff_allowlist.json` - CSS variables that may legitimately differ between paired CN and EN templates (font stacks).
 - `references/brand-profile.md` and `references/brand.example.md` - optional brand profile behavior and public example.
 - `.claude-plugin/marketplace.json` - Claude Code plugin marketplace metadata.
 - `assets/templates/` - document templates including browser-only landing page variants.

@@ -511,7 +511,7 @@
 <!-- =====================================================================
      使用说明：
  - 所有 {{变量}} 替换为实际内容
- - 删除不适用的 section（如无开源/AI判断/对外影响力）
+ - 删除不适用的 section，如无开源/AI判断/对外影响力
  - 项目可加减，每个严格遵守 角色/动作/结果 三段式
  - 改完验证：必须 2 页
        python3 -c "from weasyprint import HTML; HTML('resume.html').write_pdf('out.pdf')"
@@ -551,12 +551,12 @@
 <section>
   <div class="section-title">个人简介</div>
   <div class="summary">
-    {{80 字以内。建议结构：现任职位 + 级别 + 时长。团队构成（人数、梯队、协作方）。长期演进方向。核心沉淀领域（4-6 个方向）。}}
+    {{80 字以内。建议结构：现任职位 + 级别 + 时长。团队构成：人数、梯队、协作方。长期演进方向。核心沉淀领域：4-6 个方向。}}
   </div>
 </section>
 
 <section>
-  <div class="section-title">工作经历<span class="sub">{{起始时间}} - 至今（{{关键里程碑}}）</span></div>
+  <div class="section-title">工作经历<span class="sub">{{起始时间}} - 至今 · {{关键里程碑}}</span></div>
 
   <!-- Timeline 3 步：长期演进信号 -->
   <div class="timeline">

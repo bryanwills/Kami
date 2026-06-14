@@ -382,6 +382,8 @@ Resume exception: resume templates use a quiet bottom rule instead of the brand 
 
 One-pager / document header exception: the top header opens with an uppercase eyebrow led by an 8pt x 1.5pt brand tick, a serif title, and a 0.5pt hairline rule under the whole block. It does not use the full-height brand left bar, which reads heavy and crude as a page-top frame. Keep the left bar a section-level and pull-quote device, not a page header.
 
+Hero product shot (one-pager): a product brief earns one real screenshot as its visual anchor, not a decorative texture. Frame it in a wrapper with `overflow: hidden`, `border-radius`, a 0.5pt border, and a faint shadow; size the wrapper by `height` with the image set to `object-fit: cover` so dead background (wallpaper, chrome margins) is trimmed evenly while the app window stays whole. Give it a single caption that adds a fact, not a restatement. Adjust the wrapper height to fill the page rather than stretching text or leaving bottom whitespace.
+
 ### Table (kami-table)
 
 Unified table component across all templates. Base class applies to bare `<table>` or `.kami-table`.
@@ -435,8 +437,10 @@ Key numbers side-by-side (one-pager header, resume top, portfolio cover):
   color: var(--brand);
   font-variant-numeric: tabular-nums;   /* align digits in columns */
 }
-.metric-label { font-size: 9pt; color: var(--olive); }
+.metric-label { font-size: 9pt; color: var(--olive); white-space: nowrap; }
 ```
+
+Metric labels never wrap. The value and label share a baseline (`align-items: baseline`); a label that wraps to a second line dangles below that baseline and reads broken. Keep every label short enough for one line and set `white-space: nowrap`, so an over-long label is caught as overflow during QA instead of silently wrapping. Fix by shortening the words, not by letting it wrap.
 
 ### Section Header (`.kami-section-header`)
 

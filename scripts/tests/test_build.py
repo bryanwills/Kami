@@ -34,6 +34,7 @@ from build import (  # noqa: E402
     _off_palette_findings,
     _pair_names,
     _parse_slide_sequence,
+    check_all,
     check_cross_template_consistency,
     check_off_palette,
     check_placeholders,
@@ -407,6 +408,16 @@ def test_off_palette_repo_clean() -> None:
           f"check_off_palette returned {rc}")
 
 
+def test_lint_repo_clean() -> None:
+    """The full CSS lint (scan_file across every template) must pass. This is
+    what `build.py --check` runs; covering it here means a rule violation such
+    as thin-border-radius cannot reach main behind an otherwise green suite."""
+    rc = silently(check_all, False)
+    check("check_all (full CSS lint) passes on the real templates",
+          rc == 0,
+          f"check_all returned {rc}")
+
+
 def test_scan_file_ignores_block_comment_rgba() -> None:
     """rgba() inside a /* ... */ CSS block comment must not trigger findings."""
     fixture = """<!doctype html>
@@ -703,6 +714,7 @@ def main() -> int:
     test_off_palette_flags_non_token_hex()
     test_off_palette_ignores_root_and_svg()
     test_off_palette_repo_clean()
+    test_lint_repo_clean()
     test_scan_file_ignores_block_comment_rgba()
     test_scan_file_thin_border_with_radius()
     test_parse_slide_sequence_empty()
